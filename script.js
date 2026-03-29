@@ -1,5 +1,6 @@
 // 1. Paste your API Key here from your OpenWeatherMap dashboard
-const apiKey = config.apikey;
+    
+const apiKey = "b2ad90f8c6025cb34c19c0c96f68377b";
 const fetchWeather  = async (city) => {
   try {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -43,9 +44,10 @@ const fetchWeather  = async (city) => {
       
      };
      
+     
      document.body.style.background = backgrounds[condition] || backgrounds["clear"];
      document.body.style.transition = "background 1.5 ease";
-     document.body.style.backgroundImage = ` url('${bgUrl}')`;
+     
      document.body.style.backgroundSize = "cover";
      document.body.style.backgroundPosition = "center";
      document.body.style.backgroundAttachment = "fixed";
