@@ -1,12 +1,11 @@
-// 1. Paste your API Key here from your OpenWeatherMap dashboard
-    
-const apiKey = "b2ad90f8c6025cb34c19c0c96f68377b";
+// 1. Paste your API Key here from your OpenWeath
 const fetchWeather  = async (city) => {
   try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const url = `/weather?city=${city}`;
     
     const response = await fetch(url);
     const data = await response.json();
+    
 
     // Check for errors
     if (data.cod === "404") {
@@ -78,7 +77,7 @@ document.getElementById('submit').addEventListener("click", (e) => {
 const cities = ["Manchester", "Kolkata", "Lucknow", "Melbourne", "Wellington", "Colombo"];
 
 cities.forEach(async (city) => {
-    const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const cityUrl = `/weather?city=${city}`;
     const response = await fetch(cityUrl);
     const data = await response.json();
     
@@ -91,7 +90,7 @@ navigator.geolocation.getCurrentPosition(
     (pos) => {
         const lat = pos.coords.latitude;
         const lon = pos.coords.longitude;
-        const geoUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+        const geoUrl =  `/weather?lat=${lat}&lon=${lon}`; 
         fetch(geoUrl)
             .then(res => res.json())
             .then(data => fetchWeather(data.name));
